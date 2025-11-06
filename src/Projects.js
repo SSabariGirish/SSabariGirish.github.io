@@ -52,7 +52,7 @@ function Projects() {
               allowFullScreen
             ></iframe>
           </div>
-          
+
           <p>
             <strong>Technologies Used:</strong> (e.g., JavaScript, React, HTML/CSS)
           </p>
@@ -169,7 +169,7 @@ function Projects() {
         </div>
 
         <div className="project-card">
-          <h3>Survival Trivia Game</h3>
+          <h3>The Trivia Gauntlet</h3>
           <p>
             A dynamic quiz game that uses a Python/Flask backend to call the 
             Google Gemini API for real-time, infinite question generation. 
