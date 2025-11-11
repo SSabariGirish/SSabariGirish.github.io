@@ -1,11 +1,4 @@
-/* --- Theme Variables & Body --- */
-
-/* I've combined your two 'body' rules into one.
-  This rule now defines the variables AND applies them,
-  which is what makes the theme switcher work.
-*/
 body {
-  /* --- Theme Variables (Dark Mode Default) --- */
   --bg-color: #121212;
   --text-primary: #e0e0e0;
   --text-bright: #ffffff;
@@ -17,32 +10,25 @@ body {
   --tag-bg: #333;
   --tag-border: #555;
 
-  /* --- Transitions --- */
   transition: background-color 0.3s ease, color 0.3s ease;
-
-  /* --- Global Styles (using the variables) --- */
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--bg-color); /* <-- FIXED */
-  color: var(--text-primary);       /* <-- FIXED */
+  background-color: var(--bg-color); 
+  color: var(--text-primary);  
 
-  /* This SVG background fill uses a hard-coded color.
-    It won't change with the theme, but that's okay.
-  */
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='1' fill='%23333' fill-opacity='0.4'/%3E%3C/svg%3E");
   background-size: 20px 20px; 
 }
 
-/* --- Light Mode Definitions --- */
 body.light-mode {
   --bg-color: #ffffff;
   --text-primary: #121212;
   --text-bright: #000000;
-  --accent-color: #303F9F; /* A darker green for light backgrounds */
+  --accent-color: #303F9F;
   --accent-hover: #1A237E;
   --accent-text-dark: #ffffff;
   --card-bg: #f4f4f4;
@@ -51,7 +37,6 @@ body.light-mode {
   --tag-border: #cccccc;
 }
 
-/* --- Global Structure --- */
 .App {
   text-align: left;
   max-width: 1100px;
@@ -62,14 +47,13 @@ body.light-mode {
 section {
   padding: 30px 0;
   margin: 20px 0;
-  border-bottom: 1px solid var(--border-color); /* <-- FIXED */
+  border-bottom: 1px solid var(--border-color); 
 }
 
 section:last-of-type {
   border-bottom: none;
 }
 
-/* --- Typography --- */
 h2 {
   font-size: 2.5rem;
   font-weight: 600;
@@ -104,7 +88,6 @@ a:hover {
   text-decoration: underline;
 }
 
-/* --- Navigation --- */
 .navbar {
   background-color: var(--card-bg);
   border-bottom: 1px solid var(--border-color);
@@ -130,13 +113,13 @@ a:hover {
 }
 
 .navbar-links li a:hover {
-  color: var(--accent-color); /* <-- FIXED */
+  color: var(--accent-color); 
   text-decoration: none;
 }
 
 .nav-cv-link {
-  background-color: var(--accent-color); /* <-- FIXED */
-  color: var(--accent-text-dark) !important; /* <-- FIXED */
+  background-color: var(--accent-color); 
+  color: var(--accent-text-dark) !important; 
   font-weight: bold;
   padding: 8px 15px;
   border-radius: 5px;
@@ -144,35 +127,33 @@ a:hover {
 }
 
 .nav-cv-link:hover {
-  background-color: var(--text-bright); /* <-- FIXED */
-  color: var(--accent-text-dark) !important; /* <-- FIXED */
+  background-color: var(--text-bright); 
+  color: var(--accent-text-dark) !important; 
   text-decoration: none;
 }
 
-/* --- Header --- */
 .main-header {
   padding: 60px 0 30px 0;
   text-align: left;
-  border-bottom: 1px solid var(--border-color); /* <-- FIXED */
+  border-bottom: 1px solid var(--border-color); 
   margin-bottom: 20px;
 }
 
 .main-header h1 {
   font-size: 3.5rem;
   font-weight: 700;
-  color: var(--text-bright); /* <-- FIXED */
+  color: var(--text-bright); 
   margin: 0 0 10px 0;
 }
 
 .main-header .subtitle {
   font-size: 1.5rem;
   font-weight: 300;
-  color: var(--accent-color); /* <-- FIXED */
+  color: var(--accent-color); 
   margin: 0;
   line-height: 1.4;
 }
 
-/* --- Project Cards --- */
 .project-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
@@ -180,8 +161,8 @@ a:hover {
 }
 
 .project-card {
-  background-color: var(--card-bg); /* <-- FIXED */
-  border: 1px solid var(--border-color); /* <-- FIXED */
+  background-color: var(--card-bg); 
+  border: 1px solid var(--border-color); 
   border-radius: 8px;
   transition: all 0.2s ease-in-out;
   display: flex;
@@ -191,8 +172,7 @@ a:hover {
 
 .project-card:hover {
   transform: translateY(-5px);
-  border-color: var(--accent-color); /* <-- FIXED */
-  /* This shadow is hard-coded to green, which is fine! */
+  border-color: var(--accent-color); 
   box-shadow: 0 5px 15px rgba(0, 240, 160, 0.1); 
 }
 
@@ -206,7 +186,7 @@ a:hover {
 .project-title {
   font-size: 1.5rem;
   font-weight: 500;
-  color: var(--text-bright); /* <-- FIXED */
+  color: var(--text-bright); 
   margin-top: 0;
   margin-bottom: 15px;
   display: flex;
@@ -219,8 +199,8 @@ a:hover {
 .project-badge {
   font-size: 0.8rem;
   font-weight: 700;
-  color: var(--accent-text-dark); /* <-- FIXED */
-  background-color: var(--accent-color); /* <-- FIXED */
+  color: var(--accent-text-dark); 
+  background-color: var(--accent-color); 
   padding: 4px 10px;
   border-radius: 20px;
   flex-shrink: 0; 
@@ -248,11 +228,11 @@ a:hover {
 .project-tags li {
   font-size: 0.9rem;
   font-weight: 500;
-  background-color: var(--tag-bg); /* <-- FIXED */
-  color: var(--text-primary);     /* <-- FIXED */
+  background-color: var(--tag-bg); 
+  color: var(--text-primary);     
   padding: 6px 12px;
   border-radius: 20px;
-  border: 1px solid var(--tag-border); /* <-- FIXED */
+  border: 1px solid var(--tag-border); 
 }
 
 .project-links {
@@ -262,8 +242,8 @@ a:hover {
 }
 
 .project-links a {
-  background-color: var(--accent-color); /* <-- FIXED */
-  color: var(--accent-text-dark) !important; /* <-- FIXED */
+  background-color: var(--accent-color); 
+  color: var(--accent-text-dark) !important; 
   font-weight: bold;
   font-size: 0.95rem;
   padding: 10px 18px;
@@ -274,12 +254,11 @@ a:hover {
 }
 
 .project-links a:hover {
-  background-color: var(--text-bright); /* <-- FIXED */
-  color: var(--accent-text-dark) !important; /* <-- FIXED */
+  background-color: var(--text-bright); 
+  color: var(--accent-text-dark) !important; 
   text-decoration: none;
 }
 
-/* --- Skills --- */
 .skills-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -293,7 +272,7 @@ a:hover {
 
 .skill-category h3 {
   font-size: 1.2rem;
-  border-bottom: 2px solid var(--border-color); /* <-- FIXED */
+  border-bottom: 2px solid var(--border-color); 
   padding-bottom: 10px;
 }
 
@@ -309,11 +288,11 @@ a:hover {
 .skill-category li {
   font-size: 0.95rem;
   font-weight: 500;
-  background-color: var(--tag-bg);     /* <-- FIXED */
-  color: var(--text-primary);         /* <-- FIXED */
+  background-color: var(--tag-bg);     
+  color: var(--text-primary);         
   padding: 8px 15px;
   border-radius: 20px;
-  border: 1px solid var(--tag-border); /* <-- FIXED */
+  border: 1px solid var(--tag-border); 
   display: flex;
   align-items: center;
   gap: 8px;
@@ -328,7 +307,6 @@ a:hover {
   flex-grow: 1;
 }
 
-/* --- Other Sections --- */
 .contact-links a,
 .contact-links p {
   display: block;
@@ -347,7 +325,7 @@ a:hover {
 }
 
 .language-item strong {
-  color: var(--text-bright); /* <-- FIXED */
+  color: var(--text-bright); 
   font-size: 1.1rem;
 }
 
@@ -387,7 +365,6 @@ a:hover {
   height: 100%;
 }
 
-/* --- Theme Toggle Button --- */
 #theme-toggle {
   background-color: var(--card-bg);
   border: 1px solid var(--border-color);
