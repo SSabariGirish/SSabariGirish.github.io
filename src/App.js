@@ -7,18 +7,21 @@ import Header from './Header';
 import Interests from './Interests';
 import Navbar from './Navbar';
 import Skills from './Skills';
+import { ThemeProvider } from './ThemeContext';
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <Header />
-      <About />
-      <Projects />
-      <Skills />
-      <Interests />
-      <Contact />
-    </div>
+    <ThemeProvider>
+      <div className="App">
+        <Navbar />
+        <Header />
+        <About />
+        <Projects />
+        <Skills />
+        <Interests />
+        <Contact />
+      </div>
+    </ThemeProvider>
   );
 }
 

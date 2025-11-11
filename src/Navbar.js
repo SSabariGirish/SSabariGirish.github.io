@@ -1,4 +1,5 @@
 import React from 'react';
+import ThemeToggle from './ThemeToggle';
 
 function Navbar() {
   return (
@@ -16,6 +17,9 @@ function Navbar() {
         >
         Download CV
             </a>
+        </li>
+        <li>
+          <ThemeToggle />
         </li>
       </ul>
     </nav>
