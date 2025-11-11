@@ -13,11 +13,10 @@ import { FaQuestionCircle, FaSitemap, FaUsersCog, FaTerminal,
     FaDatabase, FaKey, FaServer, FaLockOpen, FaMicroscope, 
     FaFileSignature, FaLinux, FaUpload, FaChartBar, FaLanguage,
     FaHdd, FaMemory, FaNetworkWired, FaInfoCircle, FaStethoscope
- } from 'react-icons/fa'; // Default for missing icons
+ } from 'react-icons/fa'; 
 import {BsBroadcast} from 'react-icons/bs';
 
 function Skills() {
-  // Map each skill to its icon component
   const iconMap = {
     'Python': <DiPython />,
     'Java': <DiJava />,
@@ -30,7 +29,7 @@ function Skills() {
     'React.js': <SiReact />,
     'HTML': <SiHtml5 />,
     'CSS': <SiCss3 />,
-    'Jinja2': <SiJinja />, // No icon available
+    'Jinja2': <SiJinja />,
     'Object Oriented Programming': <FaSitemap />,
     'Data Structures': <FaUsersCog />,
     'Nmap': <BsBroadcast />,
@@ -58,7 +57,6 @@ function Skills() {
     'ExifTool': <FaInfoCircle />,
   };
 
-  // Render skill list item
   const renderSkill = (skill) => {
     const icon = iconMap[skill] || <FaQuestionCircle />;
     return (
