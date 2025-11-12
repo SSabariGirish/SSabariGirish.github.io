@@ -1,6 +1,8 @@
 import React from 'react';
+// 1. IMPORT FRAMER MOTION
+import { motion } from 'framer-motion';
 
-// 1. IMPORT THE ICONS YOU NEED
+// (Your icon imports are all perfect)
 import { 
   DiPython, DiJava, DiNodejs, DiDatabase 
 } from 'react-icons/di';
@@ -15,6 +17,20 @@ import { FaQuestionCircle, FaSitemap, FaUsersCog, FaTerminal,
     FaHdd, FaMemory, FaNetworkWired, FaInfoCircle, FaStethoscope
  } from 'react-icons/fa'; 
 import {BsBroadcast} from 'react-icons/bs';
+
+// 2. DEFINE THE ANIMATION VARIANTS
+const sectionVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      duration: 0.3
+    }
+  }
+};
 
 function Skills() {
   const iconMap = {
@@ -33,7 +49,7 @@ function Skills() {
     'Object Oriented Programming': <FaSitemap />,
     'Data Structures': <FaUsersCog />,
     'Nmap': <BsBroadcast />,
-    'Metasploit': <FaTerminal />,
+    'Metasit': <FaTerminal />,
     'SQLmap': <FaDatabase />, 
     'Hydra': <FaKey />,
     'JohnTheRipper': <FaLockOpen />,
@@ -68,7 +84,14 @@ function Skills() {
   };
 
   return (
-    <section id="skills">
+    // 3. REPLACE <section> WITH <motion.section>
+    <motion.section 
+      id="skills"
+      variants={sectionVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }} // Triggers when 30% is in view
+    >
       <h2>My Technical Toolkit</h2>
       <p>
         Here are the key technologies and methodologies I've worked with 
@@ -94,7 +117,7 @@ function Skills() {
         <div className="skill-category">
           <h3>Penetration Testing</h3>
           <ul>
-            {['Nmap', 'Metasploit', 'SQLmap', 'Hydra', 'JohnTheRipper', 'Shodan'].map(renderSkill)}
+            {['Nmap', 'Metasit', 'SQLmap', 'Hydra', 'JohnTheRipper', 'Shodan'].map(renderSkill)}
           </ul>
         </div>
 
@@ -120,7 +143,7 @@ function Skills() {
         </div>
 
       </div>
-    </section>
+    </motion.section>
   );
 }
 

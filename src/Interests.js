@@ -50,7 +50,7 @@ function Interests() {
               <em> Yakuza</em>, <em>Witcher</em>, <em>Dishonored</em> and <em>Assassin's Creed </em> series).
             </li>
             <li>
-              Analyzing character behaviors and narrative patterns in the media I consume.
+              Analysing character behaviours and narrative patterns in the media I consume.
             </li>
             <li>
               Playing strategic tabletop games like <em>Terraforming Mars</em>, 

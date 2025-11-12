@@ -1,5 +1,7 @@
 import React from 'react';
 import ProjectCard from './ProjectCard'; 
+// 1. Import Framer Motion
+import { motion } from 'framer-motion';
 
 const projectsData = [
   {
@@ -59,29 +61,51 @@ const projectsData = [
   },
 ];
 
+// 2. Define the animation "variants"
+const cardVariants = {
+  hidden: { opacity: 0, y: 50 }, 
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      duration: 0.3,
+    }
+  }
+};
+
 
 function Projects() {
   return (
     <section id="projects">
-      {/* --- I've updated your title --- */}
       <h2>Hands-On Projects</h2>
 
-      {/* --- This one class '.project-list' handles the whole grid --- */}
       <div className="project-list"> 
         
-        {/* --- We map over the data and render a card for each project --- */}
         {projectsData.map((project) => (
-          <ProjectCard 
-            key={project.title}
-            title={project.title}
-            badge={project.badge}
-            description={project.description}
-            videoUrl={project.videoUrl}
-            videoTitle={project.videoTitle}
-            techTags={project.techTags}
-            githubUrl={project.githubUrl}
-            liveUrl={project.liveUrl}
-          />
+          
+          // 3. WRAP your <ProjectCard> with the motion.div
+          <motion.div
+            key={project.title} // The key must be on the outermost element
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible" // Triggers when it scrolls into view
+            viewport={{ once: true, amount: 0.3 }} // Triggers once
+          >
+            <ProjectCard 
+              // Pass all the props to your beautiful component
+              title={project.title}
+              badge={project.badge}
+              description={project.description}
+              videoUrl={project.videoUrl}
+              videoTitle={project.videoTitle}
+              techTags={project.techTags}
+              githubUrl={project.githubUrl}
+              liveUrl={project.liveUrl}
+            />
+          </motion.div>
+
         ))}
 
       </div>

@@ -1,8 +1,28 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+
+const sectionVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      duration: 0.3
+    }
+  }
+};
 
 function About() {
   return (
-    <section id="about">
+    <motion.section 
+      id="about"
+      variants={sectionVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+    >
       <h2>About Me</h2>
       
       <p>
@@ -18,7 +38,7 @@ function About() {
       </p>
 
       <p>
-        That's why I've spent my time building practical, hands-on projects. I built a 
+        That's why I've spent my time building practical, hands-on projects. I have built a 
         {' '}<a href="https://github.com/SSabariGirish/log-file-analyser" target="_blank" rel="noopener noreferrer">Python Log Analyser</a>{' '}
         to hunt for threats like a SOC analyst, a {' '}
         <a href="https://github.com/SSabariGirish/grc-risk-assessment-toolkit" target="_blank" rel="noopener noreferrer">GRC Risk Toolkit</a>{' '}
@@ -32,7 +52,7 @@ function About() {
         skills to a graduate or junior cybersecurity role here in the UK.
       </p>
 
-    </section>
+    </motion.section>
   );
 }
 
