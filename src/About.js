@@ -38,7 +38,7 @@ function About() {
       </p>
 
       <p>
-        That's why I've spent my time building practical, hands-on projects. I have built a 
+        That's why I've spent my time building practical, hands-on projects. I've built a 
         {' '}<a href="https://github.com/SSabariGirish/log-file-analyser" target="_blank" rel="noopener noreferrer">Python Log Analyser</a>{' '}
         to hunt for threats like a SOC analyst, a {' '}
         <a href="https://github.com/SSabariGirish/grc-risk-assessment-toolkit" target="_blank" rel="noopener noreferrer">GRC Risk Toolkit</a>{' '}
