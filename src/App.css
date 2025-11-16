@@ -144,6 +144,10 @@ a:hover {
   font-weight: 700;
   color: var(--text-bright); 
   margin: 0 0 10px 0;
+  cursor: pointer;
+  user-select: none;
+  min-height: 1.2em; /* 1.2 * 3.5rem font size */
+  line-height: 1.2em; 
 }
 
 .main-header .subtitle {

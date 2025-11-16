@@ -1,50 +1,59 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+const names = [
+  "Sabari Girish Srinivasan", // 0
+  "சபரி கிரீஷ் ஸ்ரீனிவாசன்",     // 1
+  "सबरी गिरीश श्रीनिवासन",     // 2
+  "サバリ・ギリーシュ・スリニヴァサン" // 3
+];
 
 function Header() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.05
-      }
-    }
+  const [nameIndex, setNameIndex] = useState(0);
+  
+  const intervalRef = useRef(null);
+
+  const startCycling = () => {
+    if (intervalRef.current) return;
+    
+    setNameIndex(1);
+    
+    intervalRef.current = setInterval(() => {
+      setNameIndex(prevIndex => (prevIndex + 1) % names.length);
+    }, 1500); // 1.5 seconds per language
   };
 
-  const letterVariants = {
-    hidden: {
-      opacity: 0,
-      y: 20
-    },
-    visible: {
-      opacity: 1,
-      y: 0
-    }
+  const stopCycling = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    intervalRef.current = null;
+    
+    setNameIndex(0);
   };
-
-  const title = "Sabari Girish Srinivasan";
-  const letters = Array.from(title);
 
   return (
-    <header className="main-header" id="about">
+    <header 
+      className="main-header" 
+      id="about"
+      onMouseEnter={startCycling}
+      onMouseLeave={stopCycling}
+    >
       
-      <motion.h1 
-        className="animated-title" 
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
+      <h1 
+        className="animated-title"
       >
-        {letters.map((letter, index) => (
+        <AnimatePresence mode='wait'>
           <motion.span
-            key={index}
-            variants={letterVariants} 
-            style={{ display: 'inline-block' }} 
+            key={nameIndex}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+            style={{ display: 'inline-block' }}
           >
-            {letter === ' ' ? '\u00A0' : letter} 
+            {names[nameIndex]}
           </motion.span>
-        ))}
-      </motion.h1>
+        </AnimatePresence>
+      </h1>
 
       <p className="subtitle">
         MSc Cyber Security Graduate | Full-Stack Developer | GRC & SOC Enthusiast
