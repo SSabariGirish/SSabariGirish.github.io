@@ -62,7 +62,7 @@ const projectsData = [
   {
     title: 'CyberSim Flashcards',
     description: 'A gamified cybersecurity training tool that simulates common attack vectors like SQL injection and phishing to visualise vulnerabilities and demonstrate effective defence strategies.',
-    videoUrl: 'https://www.youtube.com/watch?v=oRZYsHNsSSI',
+    videoUrl: 'https://www.youtube.com/embed/oRZYsHNsSSI',
     videoTitle: 'CyberSim Flashcards Walkthrough',
     techTags: 'TypeScript, React, Vite',
     githubUrl: 'https://github.com/SSabariGirish/cybersim-flashcards',
