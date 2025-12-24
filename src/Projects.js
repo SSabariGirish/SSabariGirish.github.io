@@ -59,6 +59,15 @@ const projectsData = [
     githubUrl: 'https://github.com/SSabariGirish/grc-risk-assessment-toolkit',
     liveUrl: null,
   },
+  {
+    title: 'CyberSim Flashcards',
+    description: 'A gamified cybersecurity training tool that simulates common attack vectors like SQL injection and phishing to visualise vulnerabilities and demonstrate effective defence strategies.',
+    videoUrl: 'https://www.youtube.com/watch?v=oRZYsHNsSSI',
+    videoTitle: 'CyberSim Flashcards Walkthrough',
+    techTags: 'TypeScript, React, Vite',
+    githubUrl: 'https://github.com/SSabariGirish/cybersim-flashcards',
+    liveUrl: 'https://ssabarigirish.github.io/cybersim-flashcards/',
+  },
 ];
 
 // 2. Define the animation "variants"
