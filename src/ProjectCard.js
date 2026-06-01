@@ -23,7 +23,11 @@ function ProjectCard({ title, badge, description, videoUrl, videoTitle, techTags
           {badge && <span className="project-badge">{badge}</span>}
         </h3>
         
-        <p className="project-description" dangerouslySetInnerHTML={{ __html: description }}></p>
+        <div className="project-description">
+          {description.split('<br><br>').map((paragraph, index) => (
+              <p key={index} style={{ marginTop: 0 }}>{paragraph}</p>
+          ))}
+      </div>
         
         <ul className="project-tags">
           {tags.map(tag => (

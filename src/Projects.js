@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import ProjectCard from './ProjectCard'; 
-// 1. Import Framer Motion
 import { motion } from 'framer-motion';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const projectsData = [
   {
@@ -70,7 +70,6 @@ const projectsData = [
   },
 ];
 
-// 2. Define the animation "variants"
 const cardVariants = {
   hidden: { opacity: 0, y: 50 }, 
   visible: {
@@ -84,38 +83,64 @@ const cardVariants = {
   }
 };
 
-
 function Projects() {
+  const carouselRef = useRef(null);
+
+  const scroll = (direction) => {
+    if (carouselRef.current) {
+      // 380 is roughly the width of one card + the gap. 
+      // You can adjust this number if the scroll distance feels too short/long.
+      const scrollAmount = direction === 'left' ? -380 : 380; 
+      carouselRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="projects">
       <h2>Hands-On Projects</h2>
 
-      <div className="project-list"> 
+      <div className="carousel-wrapper">
         
-        {projectsData.map((project) => (
-          
-          // 3. WRAP your <ProjectCard> with the motion.div
-          <motion.div
-            key={project.title} // The key must be on the outermost element
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible" // Triggers when it scrolls into view
-            viewport={{ once: true, amount: 0.3 }} // Triggers once
-          >
-            <ProjectCard 
-              // Pass all the props to your beautiful component
-              title={project.title}
-              badge={project.badge}
-              description={project.description}
-              videoUrl={project.videoUrl}
-              videoTitle={project.videoTitle}
-              techTags={project.techTags}
-              githubUrl={project.githubUrl}
-              liveUrl={project.liveUrl}
-            />
-          </motion.div>
+        <button 
+          className="carousel-arrow left" 
+          onClick={() => scroll('left')} 
+          aria-label="Scroll Left"
+        >
+          <FaChevronLeft />
+        </button>
 
-        ))}
+        <div className="project-list" ref={carouselRef}> 
+          
+          {projectsData.map((project) => (
+            <motion.div
+              key={project.title} 
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible" 
+              viewport={{ once: true, amount: 0.3 }} 
+            >
+              <ProjectCard 
+                title={project.title}
+                badge={project.badge}
+                description={project.description}
+                videoUrl={project.videoUrl}
+                videoTitle={project.videoTitle}
+                techTags={project.techTags}
+                githubUrl={project.githubUrl}
+                liveUrl={project.liveUrl}
+              />
+            </motion.div>
+          ))}
+
+        </div>
+
+        <button 
+          className="carousel-arrow right" 
+          onClick={() => scroll('right')} 
+          aria-label="Scroll Right"
+        >
+          <FaChevronRight />
+        </button>
 
       </div>
     </section>
