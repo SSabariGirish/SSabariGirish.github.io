@@ -248,29 +248,19 @@ a:hover {
 }
 
 /* =========================================================
-   6. HORIZONTAL PROJECT CAROUSEL
+   6. SINGLE PROJECT CAROUSEL
    ========================================================= */
-.project-list {
-  display: flex; 
-  overflow-x: auto; 
-  gap: 30px; 
-  padding: 20px 0 40px 0;
-  scrollbar-width: none; 
-}
-
-.project-list::-webkit-scrollbar {
-  display: none; 
-}
-
-.carousel-wrapper {
+.single-carousel-wrapper {
   display: flex;
-  align-items: center;
-  gap: 15px;
+  align-items: stretch;
+  justify-content: center;
+  gap: 20px;
   width: 100%;
+  max-width: 800px; /* Constrains the width so the card isn't massively wide */
+  margin: 0 auto; /* Centers the whole wrapper */
 }
 
 .carousel-arrow {
-  /* Removed position: absolute entirely */
   background-color: var(--card-bg);
   border: 2px solid var(--accent-color);
   color: var(--accent-color);
@@ -283,7 +273,8 @@ a:hover {
   cursor: pointer;
   z-index: 10;
   transition: all 0.2s ease-in-out;
-  flex-shrink: 0;
+  flex-shrink: 0; 
+  align-self: center; /* Keeps arrows vertically centered next to the card */
 }
 
 .carousel-arrow:hover {
@@ -292,35 +283,15 @@ a:hover {
   box-shadow: 0 0 10px var(--accent-color);
 }
 
-.carousel-arrow.left {
-  left: 0px;
-}
-
-.carousel-arrow.right {
-  right: 0px;
-}
-
-.project-list {
-  display: flex; 
-  overflow-x: auto; 
-  scroll-snap-type: x mandatory; 
-  gap: 30px; 
-  padding: 20px 0px 40px 0px;
-  scrollbar-width: none; 
-  width: 100%;
-  scroll-behavior: smooth; 
+.project-display-area {
   flex-grow: 1;
-}
-
-.project-list::-webkit-scrollbar {
-  display: none; 
+  display: flex;
+  justify-content: center;
+  overflow: hidden; /* Prevents the slide animation from breaking the container width */
 }
 
 .project-card {
-  min-width: 350px;
-  max-width: 400px;
-  flex-shrink: 0; 
-  
+  width: 100%;
   background-color: var(--card-bg); 
   border: 1px solid var(--border-color); 
   border-radius: 8px;
@@ -328,7 +299,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  height: auto;
+  height: 100%; /* Forces the card to stretch if the description is long */
 }
 
 .project-card:hover {
@@ -424,7 +395,7 @@ a:hover {
   overflow: hidden;
   padding-top: 56.25%; 
   position: relative;
-  border-radius: 5px 5px 0 0; /* Flattened bottom radius so it sits flush in card */
+  border-radius: 5px 5px 0 0; 
 }
 
 .video-responsive iframe {
@@ -433,6 +404,13 @@ a:hover {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+/* Optional: Hide arrows on small mobile screens */
+@media (max-width: 768px) {
+  .carousel-arrow {
+    display: none;
+  }
 }
 
 /* =========================================================

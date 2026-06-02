@@ -1,6 +1,6 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import ProjectCard from './ProjectCard'; 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const projectsData = [
@@ -70,76 +70,78 @@ const projectsData = [
   },
 ];
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 50 }, 
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: "spring",
-      stiffness: 100,
-      duration: 0.3,
-    }
-  }
-};
-
 function Projects() {
-  const carouselRef = useRef(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const scroll = (direction) => {
-    if (carouselRef.current) {
-      const scrollAmount = direction === 'left' ? -380 : 380; 
-      carouselRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    }
+  // Logic to go to the next project, looping back to 0 if at the end
+  const nextProject = () => {
+    setCurrentIndex((prevIndex) => 
+      prevIndex === projectsData.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  // Logic to go to the previous project, looping to the end if at 0
+  const prevProject = () => {
+    setCurrentIndex((prevIndex) => 
+      prevIndex === 0 ? projectsData.length - 1 : prevIndex - 1
+    );
   };
 
   return (
     <section id="projects">
-      <h2>Hands-On Projects</h2>
+      <h2 style={{ display: 'block', textAlign: 'center', margin: '0 auto 30px auto' }}>
+        Hands-On Projects
+      </h2>
 
-      <div className="carousel-wrapper">
+      <div className="single-carousel-wrapper">
         
         <button 
           className="carousel-arrow left" 
-          onClick={() => scroll('left')} 
-          aria-label="Scroll Left"
+          onClick={prevProject} 
+          aria-label="Previous Project"
         >
           <FaChevronLeft />
         </button>
 
-        <div className="project-list" ref={carouselRef}> 
-          
-          {projectsData.map((project) => (
+        <div className="project-display-area"> 
+          <AnimatePresence mode="wait">
             <motion.div
-              key={project.title} 
-              variants={cardVariants}
-              initial="hidden"
-              animate="visible"
+              key={currentIndex} 
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.2 }}
+              style={{ width: '100%' }}
             >
               <ProjectCard 
-                title={project.title}
-                badge={project.badge}
-                description={project.description}
-                videoUrl={project.videoUrl}
-                videoTitle={project.videoTitle}
-                techTags={project.techTags}
-                githubUrl={project.githubUrl}
-                liveUrl={project.liveUrl}
+                title={projectsData[currentIndex].title}
+                badge={projectsData[currentIndex].badge}
+                description={projectsData[currentIndex].description}
+                videoUrl={projectsData[currentIndex].videoUrl}
+                videoTitle={projectsData[currentIndex].videoTitle}
+                techTags={projectsData[currentIndex].techTags}
+                githubUrl={projectsData[currentIndex].githubUrl}
+                liveUrl={projectsData[currentIndex].liveUrl}
               />
             </motion.div>
-          ))}
-
+          </AnimatePresence>
         </div>
 
         <button 
           className="carousel-arrow right" 
-          onClick={() => scroll('right')} 
-          aria-label="Scroll Right"
+          onClick={nextProject} 
+          aria-label="Next Project"
         >
           <FaChevronRight />
         </button>
 
       </div>
+      
+      {/* Optional: Add a small indicator to show 1/7, 2/7, etc. */}
+      <p style={{ textAlign: 'center', marginTop: '15px', color: 'var(--border-color)', fontWeight: 'bold' }}>
+        {currentIndex + 1} / {projectsData.length}
+      </p>
+
     </section>
   );
 }
