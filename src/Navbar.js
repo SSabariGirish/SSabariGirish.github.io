@@ -1,26 +1,37 @@
 import React from 'react';
 import ThemeToggle from './ThemeToggle';
 
-function Navbar() {
+function Navbar({ currentIndex, setCurrentIndex, sections }) {
   return (
     <nav className="navbar">
       <ul className="navbar-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#interests">Interests</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a 
+        
+        {/* Dynamically render nav buttons based on the sections array */}
+        {sections.map((section, index) => (
+          <li key={section.id}>
+            <button 
+              className={`nav-btn ${currentIndex === index ? 'active' : ''}`}
+              onClick={() => setCurrentIndex(index)}
+            >
+              {section.name}
+            </button>
+          </li>
+        ))}
+
+        {/* Keep your CV Download and Theme Toggle */}
+        <li>
+          <a 
             href="SabariGirish_Resume.pdf" 
             className="cta-button" 
             download="SabariGirish_Resume.pdf"
-        >
-        Download CV
-            </a>
+          >
+            Download CV
+          </a>
         </li>
         <li>
           <ThemeToggle />
         </li>
+
       </ul>
     </nav>
   );

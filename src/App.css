@@ -2,12 +2,11 @@
    1. GLOBAL RESET & THEMING
    ========================================================= */
 *, *::before, *::after {
-  box-sizing: border-box; /* Crucial for 100vh elements with padding */
+  box-sizing: border-box; 
 }
 
 html, body {
-  height: 100%;
-  overflow: hidden; /* Disables default browser scrolling */
+  /* Removed overflow: hidden so individual long pages can scroll normally */
   margin: 0;
   padding: 0;
 }
@@ -19,21 +18,15 @@ body {
   --accent-color: #00f0a0;
   --accent-hover: #adffc9;
   --accent-text-dark: #121212;
-  --card-bg: #1e1e1e;
+  --card-bg: #1e1e1e; /* THIS GIVES THE NAVBAR ITS SOLID BACKGROUND */
   --border-color: #333;
   --tag-bg: #333;
   --tag-border: #555;
 
-  transition: background-color 0.3s ease, color 0.3s ease;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   background-color: var(--bg-color); 
   color: var(--text-primary);  
-
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='1' fill='%23333' fill-opacity='0.4'/%3E%3C/svg%3E");
-  background-size: 20px 20px; 
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 body.light-mode {
@@ -43,44 +36,73 @@ body.light-mode {
   --accent-color: #303F9F;
   --accent-hover: #1A237E;
   --accent-text-dark: #ffffff;
-  --card-bg: #f4f4f4;
+  --card-bg: #f4f4f4; /* SOLID BACKGROUND FOR LIGHT MODE NAVBAR */
   --border-color: #dddddd;
   --tag-bg: #eeeeee;
   --tag-border: #cccccc;
 }
 
 /* =========================================================
-   2. SNAP SCROLL CONTAINERS (THE CAROUSEL LOGIC)
+   2. MAIN APP CONTAINER (NEW LAYOUT)
    ========================================================= */
 .App {
   text-align: left;
   max-width: 1100px;
   margin: 0 auto; 
   padding: 0 20px;
-  
-  /* NEW: Vertical Snap Container */
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth; 
-  
-  /* Hide scrollbar for a cleaner look */
-  scrollbar-width: none; 
-}
-.App::-webkit-scrollbar {
-  display: none;
+  /* Removed all scroll-snapping and fixed heights! */
 }
 
-section, .main-header {
-  /* NEW: Section Slide Settings */
-  min-height: 100vh; 
-  scroll-snap-align: start; 
+/* Make nav buttons look like links */
+.nav-btn {
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav-btn:hover, .nav-btn.active {
+  color: var(--accent-color); 
+}
+
+/* Global Bottom Navigation Arrows */
+.global-nav {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 80px 0 40px 0; /* 80px top padding ensures content clears the sticky navbar */
-  margin: 0;
-  border-bottom: none; 
+  justify-content: space-between;
+  margin-top: 40px;
+  padding: 30px 0;
+  border-top: 1px solid var(--border-color);
+}
+
+.global-nav button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: transparent;
+  color: var(--accent-color);
+  border: 2px solid var(--accent-color);
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.global-nav button:hover:not(:disabled) {
+  background-color: var(--accent-color);
+  color: var(--accent-text-dark);
+}
+
+.global-nav button:disabled {
+  border-color: var(--border-color);
+  color: var(--border-color);
+  cursor: not-allowed;
 }
 
 /* =========================================================
@@ -213,7 +235,6 @@ a:hover {
 .project-list {
   display: flex; 
   overflow-x: auto; 
-  scroll-snap-type: x mandatory; 
   gap: 30px; 
   padding: 20px 0 40px 0;
   scrollbar-width: none; 
@@ -280,7 +301,6 @@ a:hover {
 .project-card {
   min-width: 350px;
   max-width: 400px;
-  scroll-snap-align: center; 
   flex-shrink: 0; 
   
   background-color: var(--card-bg); 
@@ -597,8 +617,8 @@ a:hover {
   border: 1px solid var(--border-color);
   padding: 10px 20px;
   border-radius: 25px;
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 1.1rem;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }

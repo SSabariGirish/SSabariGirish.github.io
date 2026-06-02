@@ -88,8 +88,6 @@ function Projects() {
 
   const scroll = (direction) => {
     if (carouselRef.current) {
-      // 380 is roughly the width of one card + the gap. 
-      // You can adjust this number if the scroll distance feels too short/long.
       const scrollAmount = direction === 'left' ? -380 : 380; 
       carouselRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     }
@@ -116,8 +114,7 @@ function Projects() {
               key={project.title} 
               variants={cardVariants}
               initial="hidden"
-              whileInView="visible" 
-              viewport={{ once: true, amount: 0.3 }} 
+              animate="visible"
             >
               <ProjectCard 
                 title={project.title}
