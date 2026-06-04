@@ -89,7 +89,7 @@ function Projects() {
 
   return (
     <section id="projects">
-      <h2 style={{ display: 'block', textAlign: 'center', margin: '0 auto 30px auto' }}>
+      <h2 style={{ display: 'block', textAlign: 'center', margin: '10px auto 30px auto' }}>
         Hands-On Projects
       </h2>
 
