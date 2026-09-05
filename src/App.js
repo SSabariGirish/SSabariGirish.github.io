@@ -4,7 +4,7 @@ import {
   profile,
   caseStudies,
   otherProjects,
-  methodology,
+  perspectives,
   timeline,
   certifications,
   skillGroups,
@@ -183,6 +183,55 @@ function CaseVisual({ motif }) {
       strokeLinejoin="round"
     >
       {VISUAL_PATHS[motif]}
+    </svg>
+  );
+}
+
+// ---------- "How I Think" column icons ----------
+// Blue Team reuses the shield language from Wards and Firewalls (same
+// visual grammar, deliberately). Red Team and Secure SWE are new: a
+// crosshair for offense, and code brackets guarding a small lock for
+// secure development.
+const PERSPECTIVE_ICONS = {
+  blueTeam: (
+    <>
+      <path d="M24 4 L40 10 V24 C40 34 33 40 24 44 C15 40 8 34 8 24 V10 Z" />
+      <path d="M16 22 H32 M16 28 H32" />
+      <circle cx="24" cy="11" r="2" className="motif-accent" />
+    </>
+  ),
+  redTeam: (
+    <>
+      <circle cx="24" cy="24" r="16" />
+      <circle cx="24" cy="24" r="6" />
+      <path d="M24 2 V10 M24 38 V46 M2 24 H10 M38 24 H46" />
+      <circle cx="24" cy="24" r="2" className="motif-accent-fill" />
+    </>
+  ),
+  secureSwe: (
+    <>
+      <path d="M16 14 L6 24 L16 34" />
+      <path d="M32 14 L42 24 L32 34" />
+      <rect x="20" y="20" width="8" height="7" rx="1" />
+      <path d="M22 20 V17 C22 15 26 15 26 17 V20" />
+      <circle cx="24" cy="23.5" r="1.2" className="motif-accent-fill" />
+    </>
+  ),
+};
+
+function PerspectiveIcon({ icon }) {
+  return (
+    <svg
+      className="perspective-icon"
+      viewBox="0 0 48 48"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      {PERSPECTIVE_ICONS[icon]}
     </svg>
   );
 }
@@ -410,16 +459,26 @@ function HowIThink() {
     <section id="thinking" className="section thinking">
       <p className="section__kicker" data-reveal>How I think</p>
       <h2 className="section__title" data-reveal>
-        Four steps, same order, every time.
+        Three mindsets, one habit of mind.
       </h2>
-      <div className="method-list">
-        {methodology.map((step, i) => (
-          <MethodologyStep
-            step={step}
-            index={i}
-            isLast={i === methodology.length - 1}
-            key={step.title}
-          />
+      <div className="perspectives-grid">
+        {perspectives.map((perspective) => (
+          <div className="perspective-column" data-reveal key={perspective.id}>
+            <div className="perspective-column__header">
+              <PerspectiveIcon icon={perspective.icon} />
+              <h3>{perspective.title}</h3>
+            </div>
+            <div className="method-list">
+              {perspective.steps.map((step, i) => (
+                <MethodologyStep
+                  step={step}
+                  index={i}
+                  isLast={i === perspective.steps.length - 1}
+                  key={step.title}
+                />
+              ))}
+            </div>
+          </div>
         ))}
       </div>
     </section>

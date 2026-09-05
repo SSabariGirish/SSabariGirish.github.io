@@ -47,7 +47,7 @@ export const caseStudies = [
     approach:
       "I built it as a 2-player game along the same lines as a tabeltop card game, on the theory that a social, two-player format forces engagement in a way a single player game doesn't. Each card and mechanic maps to a real defensive or offensive concept, so playing a round of the game means rehearsing the actual reasoning security awareness training is trying to instil.",
     built:
-      "A full card game — decks, rules, and a playable prototype — designed for non-technical audiences with no security background, plus the dissertation write-up analysing its effectiveness as a training method.",
+      "A full card-styled digital game — decks, rules, and a playable prototype — designed for non-technical audiences with no security background, plus the dissertation write-up analysing its effectiveness as a training method.",
     result:
       "Measured a 92.5% increase in participant awareness in testing, was submitted as my MSc dissertation and scored a High Distinction, and earned a High Commendation from the DTII along with praise from the Cyber Innovation Hub.",
     learned:
@@ -148,7 +148,7 @@ export const otherProjects = [
   },
   {
     name: "Trivia Game",
-    description: "A web-based trivia game project.",
+    description: "A web-based trivia game project that uses Gemini API to provide trivia questions in a JSON format.",
     url: "https://github.com/SSabariGirish/trivia-game",
   },
   {
@@ -159,28 +159,90 @@ export const otherProjects = [
   },
 ];
 
-// The four-step process shown in "How I Think" — grounded in the actual
-// frameworks from your skill list, not a generic list.
-export const methodology = [
+// "How I Think" is presented as three parallel mindsets rather than one
+// flat process — grounded in the actual tools/frameworks from your skill
+// list for each column, not generic bullet points.
+export const perspectives = [
   {
-    title: "Model",
-    description:
-      "Start by mapping how a system could actually be attacked. Use STRIDE and the MITRE ATT&CK/CAPEC catalogues as a checklist, rather than guessing at what feels risky.",
+    id: "blue-team",
+    title: "Blue Team",
+    icon: "blueTeam",
+    steps: [
+      {
+        title: "Model",
+        description:
+          "Start by mapping how a system could actually be attacked. Use STRIDE and the MITRE ATT&CK/CAPEC catalogues as a checklist, rather than guessing at what feels risky.",
+      },
+      {
+        title: "Investigate",
+        description:
+          "Go look at what's actually happening versus what should be happening. Network and log analysis with Wireshark, the ELK Stack, and SQL to separate signals of IoCs from noise.",
+      },
+      {
+        title: "Prioritise",
+        description:
+          "Not every finding deserves fixing first. Rank by real risk — impact x likelihood, weighed against ISO 27001 and NIST, and not just by how alarming something sounds.",
+      },
+      {
+        title: "Respond",
+        description:
+          "Use the Cyber Kill Chain to find where in an attack's lifecycle it's cheapest to break it, then harden specifically that stage rather than everything at once.",
+      },
+    ],
   },
   {
-    title: "Investigate",
-    description:
-      "Go look at what's actually happening versus what should be happening. Network and log analysis with Wireshark, the ELK Stack, and SQL to separate signals of IoCs from noise.",
+    id: "red-team",
+    title: "Red Team",
+    icon: "redTeam",
+    steps: [
+      {
+        title: "Recon",
+        description:
+          "Map the attack surface first (Open ports, exposed services, and the small misconfigurations nobody remembers to check) with tools like Nmap, before touching anything.",
+      },
+      {
+        title: "Exploit",
+        description:
+          "Turn a weakness into access (SQL injection, weak credentials, a known CVE) using tools like SQLmap, Metasploit, and Hydra, strictly inside the rules of engagement.",
+      },
+      {
+        title: "Escalate",
+        description:
+          "Privilege is always the goal, and access is just a checkpoint. Chain small footholds into something that matters (such as the lateral-movement logic the MITRE ATT&CK matrix catalogues).",
+      },
+      {
+        title: "Report",
+        description:
+          "Reproducibility of an exploit is crucial. Document the exact path so the defensive side can close it.",
+      },
+    ],
   },
   {
-    title: "Prioritise",
-    description:
-      "Not every finding deserves fixing first. Rank by real risk — impact x likelihood, weighed against ISO 27001 and NIST, and not just by how alarming something sounds.",
-  },
-  {
-    title: "Respond",
-    description:
-      "Use the Cyber Kill Chain to find where in an attack's lifecycle it's cheapest to break it, then harden specifically that stage rather than everything at once.",
+    id: "secure-swe",
+    title: "Secure SWE",
+    icon: "secureSwe",
+    steps: [
+      {
+        title: "Design",
+        description:
+          "Thread security into the architecture before a line of code is written. Address data flow, trust boundaries, and what happens when an unexpected input is provided.",
+      },
+      {
+        title: "Build",
+        description:
+          "Write it the way OWASP would want it reviewed. Parameterised queries, validated input, least privilege by default are added from the start, not during the review phase.",
+      },
+      {
+        title: "Verify",
+        description:
+          "Test like it's already broken. The OWASP Top 10 categories are not just theoretical, they're a checklist I run against my own code.",
+      },
+      {
+        title: "Ship",
+        description:
+          "Wire security checks into CI/CD so a regression gets caught by a pipeline, not by an incident report six months later.",
+      },
+    ],
   },
 ];
 
@@ -188,7 +250,7 @@ export const methodology = [
 // behind the "Show full timeline" toggle.
 export const timeline = [
   {
-    dates: "2024 – 2025",
+    dates: "2024 - 2025",
     title: "MSc Cyber Security",
     org: "Cardiff University",
     detail: "Distinction · Best Overall Student on the programme",
@@ -230,7 +292,7 @@ export const certifications = [
   "Cisco Cybersecurity Operations Fundamentals Certificate",
   "Pre-Security — TryHackMe",
   "Cyber Security 101 — TryHackMe",
-  "The Complete Cyber Security Course (Parts 1–4) — StationX",
+  "The Complete Cyber Security Course (Parts 1-4) — StationX",
   "SecureFlag OWASP Top 10:2021 in Python with Django",
   "100 Days of Code: The Complete Python Pro Bootcamp — The App Brewery",
   "The Complete Full-Stack Web Development Bootcamp — The App Brewery",
