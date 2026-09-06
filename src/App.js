@@ -9,6 +9,8 @@ import {
   certifications,
   skillGroups,
   interests,
+  languages,
+  hobbies,
 } from "./content";
 
 const NAV_LINKS = [
@@ -566,6 +568,28 @@ function Interests() {
     <section className="section interests">
       <p className="section__kicker" data-reveal>What I'm interested in</p>
       <p className="interests__text" data-reveal>{interests}</p>
+
+      <div data-reveal>
+        <h4 className="interests__subhead">Hobbies</h4>
+        <ul className="hobbies-list">
+          {hobbies.map((h) => (
+            <li key={h}>{h}</li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="languages-list" data-reveal>
+        <h4 className="interests__subhead">Languages</h4>
+        {languages.map((l) => (
+          <div className="languages-list__row" key={l.name}>
+            <div className="languages-list__head">
+              <span className="languages-list__name">{l.name}</span>
+              <span className="languages-list__level">{l.level}</span>
+            </div>
+            <p className="languages-list__note">{l.note}</p>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }

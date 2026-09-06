@@ -836,6 +836,80 @@ kbd {
   max-width: 60ch;
 }
 
+.interests__subhead {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  color: var(--ink-faint);
+  margin: 40px 0 16px;
+}
+
+.hobbies-list li {
+  position: relative;
+  padding-left: 16px;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  max-width: 64ch;
+}
+
+.hobbies-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 6px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.languages-list {
+  padding-top: 8px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.languages-list__row {
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.languages-list__row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.languages-list__head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.languages-list__name {
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  font-weight: 600;
+}
+
+.languages-list__level {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--accent-ink);
+}
+
+.languages-list__note {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  margin: 0;
+  max-width: 60ch;
+}
+
 /* ---------- Contact ---------- */
 
 .contact {

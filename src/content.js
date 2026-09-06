@@ -47,7 +47,7 @@ export const caseStudies = [
     approach:
       "I built it as a 2-player game along the same lines as a tabeltop card game, on the theory that a social, two-player format forces engagement in a way a single player game doesn't. Each card and mechanic maps to a real defensive or offensive concept, so playing a round of the game means rehearsing the actual reasoning security awareness training is trying to instil.",
     built:
-      "A full card-styled digital game — decks, rules, and a playable prototype — designed for non-technical audiences with no security background, plus the dissertation write-up analysing its effectiveness as a training method.",
+      "A full card game — decks, rules, and a playable prototype — designed for non-technical audiences with no security background, plus the dissertation write-up analysing its effectiveness as a training method.",
     result:
       "Measured a 92.5% increase in participant awareness in testing, was submitted as my MSc dissertation and scored a High Distinction, and earned a High Commendation from the DTII along with praise from the Cyber Innovation Hub.",
     learned:
@@ -148,7 +148,7 @@ export const otherProjects = [
   },
   {
     name: "Trivia Game",
-    description: "A web-based trivia game project that uses Gemini API to provide trivia questions in a JSON format.",
+    description: "A web-based trivia game project.",
     url: "https://github.com/SSabariGirish/trivia-game",
   },
   {
@@ -181,7 +181,7 @@ export const perspectives = [
       {
         title: "Prioritise",
         description:
-          "Not every finding deserves fixing first. Rank by real risk — impact x likelihood, weighed against ISO 27001 and NIST, and not just by how alarming something sounds.",
+          "I need to find which vulnerability needs to be fixed first. Rank by real risk (impact x likelihood), weighed against ISO 27001 and NIST.",
       },
       {
         title: "Respond",
@@ -198,22 +198,22 @@ export const perspectives = [
       {
         title: "Recon",
         description:
-          "Map the attack surface first (Open ports, exposed services, and the small misconfigurations nobody remembers to check) with tools like Nmap, before touching anything.",
+          "Map the attack surface first. See if there are open ports, exposed services, and the small misconfigurations nobody remembers to check. Use tools like Nmap to perform this outline scan before touching anything.",
       },
       {
         title: "Exploit",
         description:
-          "Turn a weakness into access (SQL injection, weak credentials, a known CVE) using tools like SQLmap, Metasploit, and Hydra, strictly inside the rules of engagement.",
+          "Turn a weakness into access. Try SQL injection, XSS, weak credentials, or a known CVE using tools like SQLmap, Metasploit, and Hydra, strictly inside the agreed rules of engagement.",
       },
       {
         title: "Escalate",
         description:
-          "Privilege is always the goal, and access is just a checkpoint. Chain small footholds into something that matters (such as the lateral-movement logic the MITRE ATT&CK matrix catalogues).",
+          "Privilege is always the primary goal. Chain small footholds into admin access using the lateral-movement logic the MITRE ATT&CK matrix catalogues.",
       },
       {
         title: "Report",
         description:
-          "Reproducibility of an exploit is crucial. Document the exact path so the defensive side can close it.",
+          "Ensure replicability of the exploit. Document the exact path so the defensive side can close it.",
       },
     ],
   },
@@ -225,22 +225,22 @@ export const perspectives = [
       {
         title: "Design",
         description:
-          "Thread security into the architecture before a line of code is written. Address data flow, trust boundaries, and what happens when an unexpected input is provided.",
+          "Thread security into the architecture before a line of code is written. Decide on the data flow, trust boundaries, and what happens when an unexpected input is provided.",
       },
       {
         title: "Build",
         description:
-          "Write it the way OWASP would want it reviewed. Parameterised queries, validated input, least privilege by default are added from the start, not during the review phase.",
+          "Write it the way OWASP would want it reviewed. Involve parameterised queries, validated input, least privilege and other secure principles from the very first step.",
       },
       {
         title: "Verify",
         description:
-          "Test like it's already broken. The OWASP Top 10 categories are not just theoretical, they're a checklist I run against my own code.",
+          "Test like it's already broken. The OWASP Top 10 categories are a checklist I actually run against my own code.",
       },
       {
         title: "Ship",
         description:
-          "Wire security checks into CI/CD so a regression gets caught by a pipeline, not by an incident report six months later.",
+          "Wire security checks into CI/CD so a regression gets caught by a pipeline immediately and not under dire scenarios.",
       },
     ],
   },
@@ -263,8 +263,8 @@ export const timeline = [
   {
     dates: "2025",
     title: "1st Place, ISB Hackathon",
-    org: "PixelTrue",
-    detail: "AI-driven deepfake detection system, 92% accuracy",
+    org: "PixelTrue Engine",
+    detail: "AI-driven deepfake detection system achieving 92% accuracy",
   },
   {
     dates: "2022 - 2024",
@@ -284,6 +284,11 @@ export const timeline = [
     title: "B.Tech Computer Science",
     org: "Vellore Institute of Technology",
     detail: "8.64 CGPA (First Class equivalent)",
+    bullets: [
+      "Dissertation: An image repost detection algorithm that uses three existing algorithms under different thresholds to acknowledge pirated copyrighted images posted in a skewed manner to avoid being caught by existing detection algorithms",
+      "Member of the Debate Society",
+      "Research: Historial origins, similarities, spread and dialects of Dravidian languages - Tamil, Malayalam, Telugu, Kannada and Tulu"
+    ],
   },
 ];
 
@@ -292,7 +297,7 @@ export const certifications = [
   "Cisco Cybersecurity Operations Fundamentals Certificate",
   "Pre-Security — TryHackMe",
   "Cyber Security 101 — TryHackMe",
-  "The Complete Cyber Security Course (Parts 1-4) — StationX",
+  "The Complete Cyber Security Course (Parts 1 - 4) — StationX",
   "SecureFlag OWASP Top 10:2021 in Python with Django",
   "100 Days of Code: The Complete Python Pro Bootcamp — The App Brewery",
   "The Complete Full-Stack Web Development Bootcamp — The App Brewery",
@@ -311,8 +316,40 @@ export const skillGroups = [
   { title: "AI & Data Analysis", skills: ["MS Excel", "Pandas", "NumPy", "Scikit-Learn", "Matplotlib / Seaborn", "NLTK", "R"] },
 ];
 
-// Grounded in your resume: PatientOS (NHS Hack Day), basic Japanese,
-// debate society. Edit freely — this is meant to be the one paragraph
-// that sounds like you, not a resume line.
+// Grounded in your resume: PatientOS (NHS Hack Day) and debate society.
+// Edit freely — this is meant to be the one paragraph that sounds like
+// you, not a resume summary.
 export const interests =
-  "Outside of security work I've dabbled in health-tech — I built PatientOS, a plain-language blood test and prescription interpreter, at NHS Hack Day 2026. I'm slowly teaching myself Japanese (currently at the hiragana and katakana stage), and four years in my university's debate society taught me more about structuring an argument than most incident reports ever have.";
+  "Outside of security work I've dabbled in gaming, learning new languages and health-tech — I built PatientOS, a plain-language blood test and prescription interpreter, at NHS Hack Day 2026. Four years in my university's debate society also taught me more about structuring an argument than most incident reports ever have.";
+
+export const languages = [
+  {
+    name: "English",
+    level: "Full professional proficiency",
+    note: "Educated entirely in English. Schooling in the UAE and India, MSc in the UK. IELTS Band 8.",
+  },
+  {
+    name: "Tamil",
+    level: "Native",
+    note: "My mother tongue — fully fluent reading, writing, and speaking.",
+  },
+  {
+    name: "Hindi",
+    level: "Fluent",
+    note: "Formal proficiency via the Dakshin Bharat Hindi Prachar Sabha exams, up to Praveshika level.",
+  },
+  {
+    name: "Japanese",
+    level: "Basic",
+    note: "Self-taught in hiragana and katakana — a hobby driven by Japanese media and games.",
+  },
+];
+
+export const hobbies = [
+  "Deep, story-focused video games — The Witcher, Yakuza, Dishonored, Assassin's Creed, Batman Arkham series, Vampyr",
+  "Picking apart character behaviour and narrative structure in whatever I'm playing or watching",
+  "Strategic tabletop games — Terraforming Mars, Splendor, and D&D (which inspired Wards and Firewalls)",
+  "Cooking Indian food (I'm told I'm rather good at it)",
+  "Japanese manga and Korean manhwa",
+  "Cricket, Football and Basketball",
+];
