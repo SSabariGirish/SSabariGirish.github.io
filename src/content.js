@@ -45,13 +45,13 @@ export const caseStudies = [
     challenge:
       "The hard part wasn't the game design, it was the accuracy: turning real attack patterns like phishing, social engineering, weak access control and SQL injection into card mechanics that stay honest to how those attacks actually work, without collapsing into a cartoon version of security that teaches the wrong instincts.",
     approach:
-      "I built it as a 2-player game along the same lines as a tabeltop card game, on the theory that a social, two-player format forces engagement in a way a single player game doesn't. Each card and mechanic maps to a real defensive or offensive concept, so playing a round of the game means rehearsing the actual reasoning security awareness training is trying to instil.",
+      "I built it as a 2-player game along the same lines as a tabletop card game, on the theory that a social, two-player format forces engagement in a way a single player game doesn't. Each card and mechanic maps to a real defensive or offensive concept, so playing a round of the game means rehearsing the actual reasoning security awareness training is trying to instil.",
     built:
-      "A full card game — decks, rules, and a playable prototype — designed for non-technical audiences with no security background, plus the dissertation write-up analysing its effectiveness as a training method.",
+      "A full card game including decks, rules, and a playable prototype was designed for non-technical audiences with no security background, plus the dissertation write-up analysing its effectiveness as a training method.",
     result:
       "Measured a 92.5% increase in participant awareness in testing, was submitted as my MSc dissertation and scored a High Distinction, and earned a High Commendation from the DTII along with praise from the Cyber Innovation Hub.",
     learned:
-      "That the best security training doesn't explain a concept — it makes you make the same mistake an attacker exploits, once, safely, so it sticks.",
+      "That the best security training doesn't just explain a concept. It makes you make the same mistake an attacker exploits, once, safely, so it sticks.",
     tags: ["Python", "Flask", "HTML/CSS", "Jinja2", "Game Design"],
     url: "https://github.com/SSabariGirish/wards-and-firewalls",
   },
