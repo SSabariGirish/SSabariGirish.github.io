@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-ink-700/60;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: #0a0a0a;
+    overscroll-behavior-y: none;
+  }
+
+  ::selection {
+    background: rgba(94, 235, 214, 0.25);
+    color: #fff;
+  }
+
+  /* Slim, unobtrusive scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2c2c33;
+    border-radius: 999px;
+  }
+}
+
+@layer components {
+  /* Fluid type scale using clamp() */
+  .text-fluid-hero {
+    font-size: clamp(2.75rem, 5vw + 1.5rem, 6.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+  }
+  .text-fluid-h2 {
+    font-size: clamp(2rem, 2.6vw + 1.2rem, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+  }
+  .text-fluid-h3 {
+    font-size: clamp(1.35rem, 1vw + 1rem, 1.85rem);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  .text-fluid-body {
+    font-size: clamp(1rem, 0.3vw + 0.9rem, 1.125rem);
+    line-height: 1.65;
+  }
+
+  .glass {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015));
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-strong {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.025));
+    backdrop-filter: blur(28px) saturate(150%);
+    -webkit-backdrop-filter: blur(28px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .noise-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .kicker {
+    @apply font-mono text-[0.72rem] uppercase tracking-[0.22em] text-accent/80;
+  }
+
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 font-semibold text-ink-950 transition-transform duration-300 min-h-[44px];
+  }
+
+  .btn-ghost {
+    @apply relative inline-flex items-center justify-center gap-2 rounded-full glass px-6 py-3.5 font-medium text-ink-50 transition-colors duration-300 min-h-[44px];
+  }
+
+  .chip {
+    @apply rounded-full border border-ink-600 bg-ink-900/60 px-3 py-1 text-xs font-medium text-ink-200;
+  }
+
+  .section-pad {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
